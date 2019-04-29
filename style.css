@@ -1,0 +1,10 @@
+.container{
+  border-style: solid;
+  /* background: red; */
+  border: 2px;
+  border-color: red;
+}
+
+.form-control{
+  margin-top: 10px;
+}
