@@ -32,9 +32,8 @@ if (session_status() == PHP_SESSION_NONE) {
         <a class="nav-link" href="accueil">Accueil</a>
       </li>
       <?php
-        if($_SESSION['roleId'] == 1){
-          echo '<a class="nav-link" href="admin">Administrator</a>';
-          print_r($_SESSION['roleId']);
+        if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] == 1){
+          echo '<a class="nav-link" href="admin">Administrateur</a>';          
         }
       ?>
       <li>

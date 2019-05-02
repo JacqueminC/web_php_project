@@ -36,7 +36,42 @@ class User{
 		$response->closeCursor();
 		
 		return $data;
-	}
+  }
+  
+  /// param int
+  /// 1 for get role 1,2 and 3
+  /// 2 for get role 4
+  public function getAllUsers(int $role){
+    $pdo = DataBase::connect();
+    
+    if($role == 1){      
+      $response = $pdo->query("SELECT * FROM users WHERE roleId <= 3");
+    }
+    else if($role == 2){
+      $response = $pdo->query("SELECT * FROM users WHERE roleId LIKE 4");
+    }       
+    
+    return $response;
+  }
+
+  public static function roleConvert(int $role){
+    switch($role){
+      case 1:
+        return 'Root';
+        break;
+      case 2:
+        return 'Admin';
+        break;
+      case 3: 
+        return 'Employé';
+      case 4:
+       return 'Client';
+       break;
+      default:
+        return 'error';
+        break;
+    }
+  }
 
 	public function validatePassword(string $password){
 		return password_verify($password, $this->passwordUser);      
@@ -44,6 +79,10 @@ class User{
 
 	public function getLogin(){
 		return $this->login;
+  }
+
+  public function getRoleId(){
+    return $this->roleId;
   }
   
   public static function newUser(User $newUser){

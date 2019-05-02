@@ -66,11 +66,11 @@ INSERT INTO roles VALUES
 -- hash bcrypt
 INSERT INTO users VALUES 
 -- root1234
-(1, 'Cédric', 'Jacquemin', 'CédricRoot', '$2y$10$wQDmoytI.gXIgm.juxe1N.zSDCyQNkwkvwGpDPcI27TfeOKBOGUxq', 'cedjacq@outlook.com', 1);
+-- (1, 'Cédric', 'Jacquemin', 'CédricRoot', '$2y$10$wQDmoytI.gXIgm.juxe1N.zSDCyQNkwkvwGpDPcI27TfeOKBOGUxq', 'cedjacq@outlook.com', 1);
 -- admin1234
--- (2, "Cédric", "Jacquemin", "CédricAdmin", "$2y$10$jGVgNc2QyzgqzUSY.wcI2.m7gzryd4Uld7RQaAF291CgAQJkDMHAi", "cedjacq@outlook.com", 2),
+(2, "Cédric", "Jacquemin", "CédricAdmin", "$2y$10$jGVgNc2QyzgqzUSY.wcI2.m7gzryd4Uld7RQaAF291CgAQJkDMHAi", "cedjacq@outlook.com", 2),
 -- employee1234
--- (3, "Edward", "Stark", "Employee", "$2y$10$Nm4N0dVqe03tJWz3aV89AuvWOwvjP5PMxl31mdUyE/R7rrfWWiWji", "edwardstark@westeros.be", 3),
+(3, "Edward", "Stark", "Employee", "$2y$10$Nm4N0dVqe03tJWz3aV89AuvWOwvjP5PMxl31mdUyE/R7rrfWWiWji", "edwardstark@westeros.be", 3);
 -- user1234
 -- (4, "Kurt", "Cobain", "User",  "$2y$10$lYF0YsGTw6qQd82x3DfgAukrNZ/BZRXXU.UdIWlqhBVPt2/iqH6La", "kurtcobain@nirvana.be", 4); 
 
