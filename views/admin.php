@@ -5,7 +5,6 @@ if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] > 3){
 }
 ?>
 
-
 <div class="row">
   <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -15,7 +14,7 @@ if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] > 3){
       <a class="nav-link" href="?case=customer">Clients</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="">Commandes</a>
+      <a class="nav-link" href="?case=product">Commandes</a>
     </li>
   </ul>
 </div>
@@ -31,8 +30,8 @@ if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] > 3){
             case 'customer':
                 include 'views/customer.php';
                 break;            
-            case '':
-                include 'views/.php';
+            case 'product':
+                include 'views/product.php';
                 break;
         }
     }

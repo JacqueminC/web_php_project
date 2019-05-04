@@ -36,7 +36,7 @@ echo '<div class="alert alert-dismissible alert-secondary">
         <button type="submit" class="btn btn-success">Inscription</button>
       </div>
   </form>
-  </div>
+</div>
 
 
 <?php 

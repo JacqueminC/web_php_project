@@ -13,7 +13,7 @@ require 'models/user.php';
     echo '<button type="button" class="btn btn-success disabled">Ajouter</button>';
   }
 ?>
-    
+  </div>    
 </div>
 
 <table class="table table-sm">
@@ -45,7 +45,7 @@ foreach($data as $line){
     $line['email'] . '</td> <td>' .
     $role = User::roleConvert($line['roleId']) . '</td> <td class="td-right">';
     if($_SESSION['roleId'] <= 2 && $_SESSION['roleId'] <= $line['roleId']){
-      echo '<a href="viewUser?id= ' .  $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
+      echo '<a href="modifyUser?id=' .  $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
     }
     else{
       echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
@@ -69,7 +69,7 @@ foreach($data as $line){
     $line['email'] . '</td> <td>' .
     $role = User::roleConvert($line['roleId']) . '</td> <td class="td-right"> ';
     if($_SESSION['roleId'] <= 2 && $_SESSION['roleId'] <= $line['roleId']){
-      echo '<a href="viewUser?id= ' .  $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
+      echo '<a href="modifyUser?id= ' .  $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
     }
     else{
       echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';

@@ -62,6 +62,15 @@ class User{
     return $response;
   }
 
+  public static function getUser(int $id){
+    $pdo = DataBase::connect();		
+    $response = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+    $response->execute(array(':id' => $id));
+    $data = $response->fetch();
+    
+    return $data;
+  }
+
   public static function SelectRole(int $currentRole){
     $role = '';
     for($i = 4; $i >= 1; $i--){
@@ -83,6 +92,7 @@ class User{
         break;
       case 3: 
         return 'Employé';
+        break;
       case 4:
        return 'Client';
        break;

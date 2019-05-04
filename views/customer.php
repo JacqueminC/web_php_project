@@ -2,6 +2,20 @@
 require 'models/user.php';
 ?>
 
+<div class="row">
+  <div class="col-0">
+  
+<?php
+  if($_SESSION['roleId'] <= 2){
+    echo '<a href="addEmployee"><button type="button" class="btn btn-success">Ajouter</button> </a>';
+  }
+  else {
+    echo '<button type="button" class="btn btn-success disabled">Ajouter</button>';
+  }
+?>
+  </div>    
+</div>
+
 <table class="table">
   <thead>
     <tr>
@@ -29,7 +43,21 @@ foreach($data as $line){
     $line['lastName'] . '</td> <td>' .
     $line['login'] . '</td> <td>' .
     $line['email'] . '</td> <td>' .
-    $role = User::roleConvert($line['roleId']) . '</td> <td> </tr>';
+    $role = User::roleConvert($line['roleId']) . '</td> <td class="td-right">';
+    if($_SESSION['roleId'] <= 3){
+      echo '<a href="modifyUser?id=' .  $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
+    }
+    else{
+      echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
+    }
+        
+    if($_SESSION['roleId'] <=2){
+      echo '<a href="viewUser?id= ' .  $line['id'] .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+    }
+    else {
+      echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
+    }
+    echo '</td> </tr>';
   }
 
   if($row == TRUE){
@@ -39,7 +67,21 @@ foreach($data as $line){
     $line['lastName'] . '</td> <td>' .
     $line['login'] . '</td> <td>' .
     $line['email'] . '</td> <td>' .
-    $role = User::roleConvert($line['roleId']) . '</td> <td> </tr>';    
+    $role = User::roleConvert($line['roleId']) . '</td> <td class="td-right">';
+    if($_SESSION['roleId'] <= 3){
+      echo '<a href="modifyUser?id=' .  $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
+    }
+    else{
+      echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
+    }
+        
+    if($_SESSION['roleId'] <=2){
+      echo '<a href="viewUser?id= ' .  $line['id'] .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+    }
+    else {
+      echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
+    }
+    echo '</td> </tr>';
   }
 
   if($row == FALSE){
