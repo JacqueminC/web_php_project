@@ -1,0 +1,17 @@
+.td-right {
+  float: right;
+  border:  none;
+}
+
+.tr-right{
+  text-align: right;
+}
+
+button{
+  margin-left: 10px;
+}
+
+.h4-log{
+  font-weight: bold;
+  color: white;
+}

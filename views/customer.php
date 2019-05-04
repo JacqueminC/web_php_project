@@ -24,7 +24,7 @@ foreach($data as $line){
   
   if($row == FALSE){
     echo '<tr> <td>' . 
-    $line['roleId'] . '</td> <td>' .
+    $line['id'] . '</td> <td>' .
     $line['firstName'] . '</td> <td>' .
     $line['lastName'] . '</td> <td>' .
     $line['login'] . '</td> <td>' .
@@ -34,7 +34,7 @@ foreach($data as $line){
 
   if($row == TRUE){
     echo '<tr class="table-light"> <td>' . 
-    $line['roleId'] . '</td> <td>' .
+    $line['id'] . '</td> <td>' .
     $line['firstName'] . '</td> <td>' .
     $line['lastName'] . '</td> <td>' .
     $line['login'] . '</td> <td>' .

@@ -3,10 +3,17 @@ require 'layout/header.php';
 if(!empty($_SESSION['login'])){
   header('Location: index');
 }
+
+if(isset($_SESSION['registerSuccess']) && $_SESSION['registerSuccess'] == 'error'){
+echo '<div class="alert alert-dismissible alert-warning">
+<button type="button" class="close" data-dismiss="alert">&times;</button>
+<p class="mb-0">Erreur inscription!</p></div>';
+}
+if(isset($_SESSION['registerSuccess']) && $_SESSION['registerSuccess'] == 'empty')
+echo '<div class="alert alert-dismissible alert-secondary">
+<button type="button" class="close" data-dismiss="alert">&times;</button>
+<p class="mb-0">Veuillez remplir les champs!</p></div>';
 ?>
-<div></div>
-<div></div>
-<div></div>
 
 
 
@@ -17,11 +24,11 @@ if(!empty($_SESSION['login'])){
   <form action="addUser" method="post">
       <div class="form-group">
         <div class="col">
-          <input type="text" name="firstName" class="form-control" value="<?php echo @$_POST['firstName'] ?>" placeholder="Prénom" required>
-          <input type="text" name="lastName" class="form-control" value="<?php echo @$_POST['lastName'] ?>" placeholder="Nom" required> 
-          <input type="email" name="email" class="form-control" value="<?php echo @$_POST['email'] ?>" aria-describedby="emailHelp" placeholder="Email" required> 
-          <input type="text" name="login" class="form-control"  placeholder="Login" required> 
-          <input type="password" name="password" class="form-control" placeholder="Mot de passe" required>        
+          <input type="text" name="firstName" class="form-control" value="<?php echo @$_POST['firstName'] ?>" placeholder="Prénom">
+          <input type="text" name="lastName" class="form-control" value="<?php echo @$_POST['lastName'] ?>" placeholder="Nom"> 
+          <input type="email" name="email" class="form-control" value="<?php echo @$_POST['email'] ?>" aria-describedby="emailHelp" placeholder="Email"> 
+          <input type="text" name="login" class="form-control"  placeholder="Login"> 
+          <input type="password" name="password" class="form-control" placeholder="Mot de passe">        
         </div>
       </div>
 
@@ -33,5 +40,6 @@ if(!empty($_SESSION['login'])){
 
 
 <?php 
+$_SESSION['registerSuccess'] = 'no';
 require 'layout/footer.php';
 ?>

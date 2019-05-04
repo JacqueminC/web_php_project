@@ -32,13 +32,10 @@ if (session_status() == PHP_SESSION_NONE) {
         <a class="nav-link" href="accueil">Accueil</a>
       </li>
       <?php
-        if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] == 1){
+        if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] <= 3){
           echo '<a class="nav-link" href="admin">Administrateur</a>';          
         }
-      ?>
-      <li>
-        <a href="http://" target="_blank" rel="noopener noreferrer"></a>
-      </li>
+      ?>      
     </ul>
     <?php       
       if(empty($_SESSION['login'])){
@@ -47,7 +44,7 @@ if (session_status() == PHP_SESSION_NONE) {
       }
       else 
       {
-        echo '<h4>'. $_SESSION['login'] . '</h4>';
+        echo '<h4 class="h4-log">'. $_SESSION['login'] . '</h4>';
         echo "<a href=\"logout\"> <button type=\"button\" class=\"btn btn-outline-warning\">Déconnexion</button> </a>";
       }
     ?>

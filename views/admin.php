@@ -1,6 +1,6 @@
 <?php
 require 'layout/header.php';
-if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] != 1){
+if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] > 3){
   header('Location: index');
 }
 ?>
@@ -20,8 +20,7 @@ if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] != 1){
   </ul>
 </div>
 
-<div class="row">
-  
+<div class="row">  
   <div class="col">
   <?php
     if(isset($_GET['case'])){
