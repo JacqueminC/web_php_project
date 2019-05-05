@@ -1,16 +1,16 @@
 <?php 
-require 'layout/header.php';
-require 'models/user.php';
-if(!empty($_SESSION['login']) && $_SESSION['roleId'] >= 3){
+if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 2){
   header('Location: index');
 }
+require 'layout/header.php';
+require 'models/user.php';
 ?>
 
 <h1 class="text-center">Ajouter</h1>
 
 <div class="d-flex justify-content-center">
 
-  <form action="addEmployee" method="post">
+  <form action="employee?action=create" method="post">
       <div class="form-group">
         <div class="col">
           <input type="text" name="firstName" class="form-control" value="<?php echo @$_POST['firstName'] ?>" placeholder="Prénom" required>
@@ -35,7 +35,7 @@ if(!empty($_SESSION['login']) && $_SESSION['roleId'] >= 3){
         </div>        
       </div>
   </form>
-  </div>
+</div>
 
 <?php 
 require 'layout/footer.php';

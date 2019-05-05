@@ -1,4 +1,7 @@
 <?php
+if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
+  header('Location: index');
+}
 require 'models/user.php';
 ?>
 
@@ -7,7 +10,7 @@ require 'models/user.php';
   
 <?php
   if($_SESSION['roleId'] <= 2){
-    echo '<a href="addEmployee"><button type="button" class="btn btn-success">Ajouter</button> </a>';
+    echo '<a href="employee?action=create"><button type="button" class="btn btn-success">Ajouter</button> </a>';
   }
   else {
     echo '<button type="button" class="btn btn-success disabled">Ajouter</button>';
@@ -45,14 +48,14 @@ foreach($data as $line){
     $line['email'] . '</td> <td>' .
     $role = User::roleConvert($line['roleId']) . '</td> <td class="td-right">';
     if($_SESSION['roleId'] <= 2 && $_SESSION['roleId'] <= $line['roleId']){
-      echo '<a href="modifyUser?id=' .  $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
+      echo '<a href="employee?action=modify&id='. $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
     }
     else{
       echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
     }
         
     if($_SESSION['login'] != $line['login'] && $_SESSION['roleId'] <= $line['roleId'] && $_SESSION['roleId'] != 3){
-      echo '<a href="viewUser?id= ' .  $line['id'] .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+      echo '<a href="employee?action=delete&id='. $line['id'] .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
     }
     else {
       echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
@@ -69,14 +72,14 @@ foreach($data as $line){
     $line['email'] . '</td> <td>' .
     $role = User::roleConvert($line['roleId']) . '</td> <td class="td-right"> ';
     if($_SESSION['roleId'] <= 2 && $_SESSION['roleId'] <= $line['roleId']){
-      echo '<a href="modifyUser?id= ' .  $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
+      echo '<a href="employee?action=modify&id='. $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
     }
     else{
       echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
     }
         
     if($_SESSION['login'] != $line['login'] && $_SESSION['roleId'] <= $line['roleId'] && $_SESSION['roleId'] != 3){
-      echo '<a href="viewUser?id= ' .  $line['id'] .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+      echo '<a href="employee?action=delete&id='. $line['id'] .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
     }
     else {
       echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';

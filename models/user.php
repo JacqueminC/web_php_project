@@ -129,21 +129,19 @@ class User{
     $query = "INSERT INTO users (firstName, lastName, email, login, passwordUser, roleId) 
     VALUE (:firstName, :lastName, :email, :login, :passwordUser, :roleId)";
 
-    $reponse = $pdo->prepare($query);
+    $response = $pdo->prepare($query);
 
-    $reponse->execute($data);
+    $response->execute($data);
   }
 
   public static function delete(int $id){
     $pdo = DataBase::connect();
-
     $query = "DELETE FROM users WHERE id = :id";
-
+    $response = $pdo->prepare($query);
     $response->execute(array(':id' => $id));
+  }
 
-    $reponse = $pdo->prepare($query);
-
-    $reponse->execute($data);
+  public static function update(int $id){
     
   }
 }

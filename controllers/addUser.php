@@ -1,5 +1,5 @@
 <?php
-
+require 'models/user.php';
 
 if(!empty($_POST['firstName']) 
   && !empty($_POST['lastName']) 
@@ -22,5 +22,4 @@ if(!empty($_POST['firstName'])
     header('Location: inscription'); 
   }
 
-  require 'models/user.php';
 ?>

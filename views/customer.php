@@ -1,5 +1,8 @@
 <?php
 require 'models/user.php';
+if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
+  header('Location: index');
+}
 ?>
 
 <div class="row">

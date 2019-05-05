@@ -1,6 +1,6 @@
 <?php
 require 'layout/header.php';
-if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] > 3){
+if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
   header('Location: index');
 }
 ?>
