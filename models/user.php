@@ -21,6 +21,18 @@ class User{
     return $this;
   }  
 
+  public function myConstructforUpdate(int $id, string $firstName, string $lastName, string $email, string $login, int $roleId){
+    $this->id = $id;
+    $this->firstName = $firstName;
+    $this->lastName = $lastName;
+    $this->email = $email;
+    $this->login = $login;
+    $this->roleId = $roleId;
+
+    return $this;
+
+  }
+
 	public static function getLog(string $login){
 		$pdo = DataBase::connect();
 		
@@ -141,8 +153,24 @@ class User{
     $response->execute(array(':id' => $id));
   }
 
-  public static function update(int $id){
-    
+  public static function update(User $newUser){
+    $pdo = DataBase::connect();
+
+    $data = [
+      'id' => $newUser->id,
+      'firstName' => $newUser->firstName,
+      'lastName' => $newUser->lastName,
+      'email' => $newUser->email,
+      'login' => $newUser->login,
+      'roleId' => $newUser->roleId
+    ];
+    $query = "UPDATE users 
+    SET firstName = :firstName, lastName = :lastName, email = :email, login = :login, roleId = :roleId 
+    WHERE id = :id";
+
+    $response = $pdo->prepare($query);
+
+    $response->execute($data);
   }
 }
 

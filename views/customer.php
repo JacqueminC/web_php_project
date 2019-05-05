@@ -19,7 +19,7 @@ if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
   </div>    
 </div>
 
-<table class="table">
+<table class="table table-sm">
   <thead>
     <tr>
       <th scope="col">Id</th>
@@ -28,7 +28,7 @@ if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
       <th scope="col">Login</th>
       <th scope="col">Email</th>
       <th scope="col">Role</th>
-      <th scope="col">Action</th>
+      <th scope="col" class="tr-right">Action</th>
     </tr>
   </thead>
   <tbody>

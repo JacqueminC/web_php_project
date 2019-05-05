@@ -5,9 +5,10 @@ require 'models/user.php';
 $id = $_GET['id'];
 $user = User::getUser($id);
 
-if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 2 || $_SESSION['roleId'] != $user['roleId']){
+if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 2){
   header('Location: admin?case=employee');
 }
+echo $user['roleId'];
 ?>
 
 <h1 class="text-center">Modifier</h1>
@@ -21,9 +22,9 @@ if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 2 || $_SESSION['roleId'] 
           <input type="text" name="firstName" class="form-control" value="<?php echo $user['firstName'] ?>" placeholder="Prénom" required>
           <input type="text" name="lastName" class="form-control" value="<?php echo $user['lastName'] ?>" placeholder="Nom" required> 
           <input type="email" name="email" class="form-control" value="<?php echo $user['email'] ?>" aria-describedby="emailHelp" placeholder="Email" required> 
-          <input type="text" name="login" class="form-control" value="<?php echo $user['login']?>" placeholder="Login" required>  
-          <select name="roleId" class="custom-select" value="<?php echo $user['roleId']?>">
-            <option selected="">Choisir un rôle</option>
+          <input type="text" name="login" class="form-control" value="<?php echo $user['login'] ?>" placeholder="Login" required>  
+          <select name="roleId" class="custom-select">
+            <option selected="" value="<?php echo $user['roleId']?>" ><?php echo User::roleConvert($user['roleId']) ?></option>
 <?php
  $avalaibleRole = User::SelectRole($_SESSION['roleId']);
   echo $avalaibleRole;
