@@ -5,10 +5,10 @@ if($_GET['action'] == 'create'){
   !empty($_POST['categorieId'])){
     require 'models/product.php';
 
-      $producut = new Product();  
-      $producut = $producut->myConstruct(0, $_POST['productName'], $_POST['price'], $_POST['categorieId']);
+      $product = new Product();  
+      $product = $product->myConstruct(0,$_POST['productName'], $_POST['price'], $_POST['categorieId'], $_POST['description']);
       
-      Product::newProduct($producut);
+      Product::newProduct($product);
       
       header('Location: admin?case=product');
   }

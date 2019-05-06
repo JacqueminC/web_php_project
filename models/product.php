@@ -6,8 +6,20 @@ Class Product{
   private $productName;
   private $price;
   private $categorieId;
+  private $description;
   private $imageLink;
 
+
+  public function myConstruct(int $id, string $productName, string $price, int $categorieId, string $description){
+    $this->id = $id;
+    $this->productName = $productName;
+    $this->price = $price;
+    $this->categorieId = $categorieId;
+    $this->description = $description;
+
+    return $this;
+  }
+  
   public function getAll(){
     $pdo = DataBase::connect();
 
@@ -28,15 +40,6 @@ Class Product{
     return $data;
   }
 
-  public function myConstruct(int $id, string $productName, string $price, int $categorieId){
-    $this->id = $id;
-    $this->productName = $productName;
-    $this->price = $price;
-    $this->categorieId = $categorieId;
-
-    return $this;
-  }
-
   public static function categorieConvert(int $cat){
     switch($cat){
       case 1:
@@ -54,17 +57,18 @@ Class Product{
     }
   }
 
-  public static function newProduct(Product $producut){
+  public static function newProduct(Product $product){
     $pdo = DataBase::connect();
 
     $data = [
-      'productName' => $producut->productName,
-      'price' => $producut->price,
-      'categorieId' => $producut->categorieId
+      'productName' => $product->productName,
+      'price' => $product->price,
+      'categorieId' => $product->categorieId,
+      'description' => $product->description
     ];
 
-    $query = "INSERT INTO products (productName, price, categorieId) 
-    VALUE (:productName, :price, :categorieId)";
+    $query = "INSERT INTO products (productName, price, categorieId, description) 
+    VALUE (:productName, :price, :categorieId, :description)";
 
     $response = $pdo->prepare($query);
 
@@ -78,10 +82,11 @@ Class Product{
       'id' => $product->id,
       'productName' => $product->productName,
       'price' => $product->price,
-      'categorieId' => $product->categorieId
+      'categorieId' => $product->categorieId,
+      'description' => $product->description
     ];
     $query = "UPDATE products 
-              SET productName = :productName, price = :price, categorieId = :categorieId 
+              SET productName = :productName, price = :price, categorieId = :categorieId, description = :description
               WHERE id = :id";
 
     $response = $pdo->prepare($query);
@@ -107,6 +112,9 @@ Class Product{
   }
   public function getCategorieId(){
     return $this->categorieId;;
+  }
+  public function getDescription(){
+    return $this->description;
   }
   public function getImageLink(){
     return $this->imageLink;

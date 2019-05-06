@@ -9,7 +9,7 @@ if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
 }
 ?>
 
-<h1 class="text-center">Modifier produit</h1>
+<h3 class="text-center">Modifier produit</h3>
 
 <div class="d-flex justify-content-center">
 
@@ -24,7 +24,9 @@ if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
             <option value="1">Jeux de société</option>
             <option value="2">Jeux de rôle</option>
             <option value="3">Jeux de plateau</option>
-          </select>      
+          </select>   
+            <label for="exampleTextarea">Description</label>
+            <textarea class="form-control"  name="description" id="exampleTextarea" value="<?php echo $product->getDescription() ?>" rows="3" style="height: 107px;"> <?php echo $product->getDescription() ?></textarea>
         </div>
         </div>
 

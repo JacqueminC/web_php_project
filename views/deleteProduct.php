@@ -31,6 +31,9 @@ echo '<tr>
 </tr>
 <td>Catégorie:</td>
 <td>' . Product::categorieConvert($product->getCategorieId()) .'</td>
+</tr>
+<td>Déscription:</td>
+<td>' . $product->getDescription() .'</td>
 </tr>';
 ?>  
   </table>

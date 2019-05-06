@@ -13,14 +13,18 @@ require 'models/product.php';
   <form action="product?action=create" method="post">
       <div class="form-group">
         <div class="col">
-          <input type="text" name="productName" class="form-control" value="<?php echo @$_POST['name'] ?>" placeholder="Nom" required>
+          <input type="text" name="productName" class="form-control" value="<?php echo @$_POST['productName'] ?>" placeholder="Nom" required>
           <input type="text" name="price" class="form-control" value="<?php echo @$_POST['price'] ?>" placeholder="Prix" required> 
           <select name="categorieId" class="custom-select">
             <option  selected="">Choisir une catégorie</option>
             <option value="1">Jeux de société</option>
             <option value="2">Jeux de rôle</option>
             <option value="3">Jeux de plateau</option>
-          </select>      
+          </select>
+          <div class="form-group">
+            <label for="exampleTextarea" >Description</label>
+            <textarea class="form-control" name="description" value="<?php echo @$_POST['description'] ?>" placeHolder="Description" rows="3" style="height: 107px;"></textarea>
+          </div>  
         </div>
 
       </div>
