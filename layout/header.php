@@ -31,9 +31,20 @@ if (session_status() == PHP_SESSION_NONE) {
       <li class="nav-item">
         <a class="nav-link" href="accueil">Accueil</a>
       </li>
-      <?php
+      <li class="nav-item">
+        <a href="games" class="nav-link">Jeux</a>
+      </li>
+      
+      <?php       
+        if(!empty($_SESSION['roleId'])){
+          echo '<li class="nav-item">
+          <a class="nav-link" href="account">Mon Compte</a>
+          </li>';
+        }
         if(!empty($_SESSION['roleId']) && $_SESSION['roleId'] <= 3){
-          echo '<a class="nav-link" href="admin">Administrateur</a>';          
+          echo '<li class="nav-item">
+          <a class="nav-link" href="admin">Administrateur</a>
+          </li>';          
         }
       ?>      
     </ul>

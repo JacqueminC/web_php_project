@@ -10,7 +10,7 @@ require 'models/product.php'
   
 <?php
   if($_SESSION['roleId'] <= 2){
-    echo '<a href="addEmployee"><button type="button" class="btn btn-success">Ajouter</button> </a>';
+    echo '<a href="product?action=create"><button type="button" class="btn btn-success">Ajouter</button> </a>';
   }
   else {
     echo '<button type="button" class="btn btn-success disabled">Ajouter</button>';
@@ -40,15 +40,15 @@ foreach($data as $line){
 
   if($row == FALSE){
     echo '<tr> <td>' . 
-    $line['id'] . '</td> <td>' .
-    $line['productName'] . '</td> <td>' .
-    number_format($line['price'], 2, ',', ' ') . '€</td> <td>' .
-    $cat = Product::categorieConvert($line['categorieId']) . '</td> <td class="td-right">';
+    $line->getId() . '</td> <td>' .
+    $line->getProductName() . '</td> <td>' .
+    number_format($line->getPrice(), 2, ',', ' ') . '€</td> <td>' .
+    $cat = Product::categorieConvert($line->getCategorieId()) . '</td> <td class="td-right">';
 
-    echo '<a href=""><button type="button" class="btn btn-warning"> Modifier</button></a>';
+    echo '<a href="product?action=update&id=' . $line->getId() .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
         
     if($_SESSION['roleId'] <= 3){
-      echo '<a href=""><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+      echo '<a href="product?action=delete&id=' . $line->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
     }
     else {
       echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
@@ -57,22 +57,21 @@ foreach($data as $line){
   }
   
   if($row == TRUE){
-    echo '<tr class="table-light"> <td>' . 
-    $line['id'] . '</td> <td>' .
-    $line['productName'] . '</td> <td>' .
-    number_format($line['price'], 2, ',', ' ') . '€</td> <td>' .
-    $cat = Product::categorieConvert($line['categorieId']) . '</td> <td class="td-right">';
+    echo '<tr> <td>' . 
+    $line->getId() . '</td> <td>' .
+    $line->getProductName() . '</td> <td>' .
+    number_format($line->getPrice(), 2, ',', ' ') . '€</td> <td>' .
+    $cat = Product::categorieConvert($line->getCategorieId()) . '</td> <td class="td-right">';
 
-    echo '<a href=""><button type="button" class="btn btn-warning"> Modifier</button></a>';
+    echo '<a href="product?action=update&id=' . $line->getId() .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
         
     if($_SESSION['roleId'] <= 3){
-      echo '<a href=""><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+      echo '<a href="product?action=delete&id=' . $line->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
     }
     else {
       echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
     }
     echo '</td> </tr>';
-   
   }
 
   if($row == FALSE){

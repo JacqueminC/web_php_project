@@ -19,27 +19,27 @@ $user = User::getUser($id);
 <?php
 echo '<tr>
 <td>Id:</td>
-<td>' . $user['id'] .'</td>
+<td>' . $user->getId() .'</td>
 </tr>
 <tr>
 <td>Prénom:</td>
-<td>' . $user['firstName'] .'</td>
+<td>' . $user->getFirstName() .'</td>
 </tr>
 <tr>
 <td>Nom:</td>
-<td>' . $user['lastName'] .'</td>
+<td>' . $user->getLastName() .'</td>
 </tr>
 <tr>
 <td>Login:</td>
-<td>' . $user['login'] .'</td>
+<td>' . $user->getLogin() .'</td>
 </tr>
 <tr>
 <td>Email:</td>
-<td>' . $user['email'] .'</td>
+<td>' . $user->getEmail() .'</td>
 </tr>
 <tr>
 <td>Rôle:</td>
-<td>' . User::roleConvert($user['roleId']) .'</td>
+<td>' . User::roleConvert($user->getRoleId()) .'</td>
 </tr>';
 ?>  
   </table>

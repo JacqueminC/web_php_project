@@ -33,29 +33,28 @@ if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
   </thead>
   <tbody>
 <?php
-$data = new User();
-$data = $data->getAllUsers(2);
+$user = User::getAllUsers(2);
 $row = FALSE;
 
-foreach($data as $line){
+foreach($user as $line){
   
   if($row == FALSE){
     echo '<tr> <td>' . 
-    $line['id'] . '</td> <td>' .
-    $line['firstName'] . '</td> <td>' .
-    $line['lastName'] . '</td> <td>' .
-    $line['login'] . '</td> <td>' .
-    $line['email'] . '</td> <td>' .
-    $role = User::roleConvert($line['roleId']) . '</td> <td class="td-right">';
+    $line->getId() . '</td> <td>' .
+    $line->getFirstName() . '</td> <td>' .
+    $line->getLastName() . '</td> <td>' .
+    $line->getLogin() . '</td> <td>' .
+    $line->getEmail() . '</td> <td>' .
+    $role = User::roleConvert($line->getRoleId()) . '</td> <td class="td-right">';
     if($_SESSION['roleId'] <= 3){
-      echo '<a href="modifyUser?id=' .  $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
+      echo '<a href="modifyUser?id=' .  $line->getId() .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
     }
     else{
       echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
     }
         
     if($_SESSION['roleId'] <=2){
-      echo '<a href="viewUser?id= ' .  $line['id'] .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+      echo '<a href="viewUser?id= ' .  $line->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
     }
     else {
       echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
@@ -64,22 +63,22 @@ foreach($data as $line){
   }
 
   if($row == TRUE){
-    echo '<tr class="table-light"> <td>' . 
-    $line['id'] . '</td> <td>' .
-    $line['firstName'] . '</td> <td>' .
-    $line['lastName'] . '</td> <td>' .
-    $line['login'] . '</td> <td>' .
-    $line['email'] . '</td> <td>' .
-    $role = User::roleConvert($line['roleId']) . '</td> <td class="td-right">';
+    echo '<tr> <td>' . 
+    $line->getId() . '</td> <td>' .
+    $line->getFirstName() . '</td> <td>' .
+    $line->getLastName() . '</td> <td>' .
+    $line->getLogin() . '</td> <td>' .
+    $line->getEmail() . '</td> <td>' .
+    $role = User::roleConvert($line->getRoleId()) . '</td> <td class="td-right">';
     if($_SESSION['roleId'] <= 3){
-      echo '<a href="modifyUser?id=' .  $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
+      echo '<a href="modifyUser?id=' .  $line->getId() .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
     }
     else{
       echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
     }
         
     if($_SESSION['roleId'] <=2){
-      echo '<a href="viewUser?id= ' .  $line['id'] .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+      echo '<a href="viewUser?id= ' .  $line->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
     }
     else {
       echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';

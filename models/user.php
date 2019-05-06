@@ -34,20 +34,14 @@ class User{
   }
 
 	public static function getLog(string $login){
-		$pdo = DataBase::connect();
-		
+		$pdo = DataBase::connect();		
 		$response = $pdo->prepare("SELECT * FROM users WHERE login = :login");
-
-		$response->execute(array(':login' => $login));
-
-		// pour récuper un objet User avec le fetch
-		$response->setFetchMode(PDO::FETCH_CLASS, 'User');
-
+    $response->execute(array(':login' => $login));
+    //retourne un objet USER
+    $response->setFetchMode( PDO::FETCH_CLASS, "User");
 		$data = $response->fetch();
-
-		$response->closeCursor();
 		
-		return $data;
+    return $data;
   }
 
   public static function registerVerification(string $login){
@@ -61,25 +55,30 @@ class User{
   /// param int
   /// 1 for get role 1,2 and 3
   /// 2 for get role 4
-  public function getAllUsers(int $role){
+  public static function getAllUsers(int $role){
     $pdo = DataBase::connect();
     
     if($role == 1){      
       $response = $pdo->query("SELECT * FROM users WHERE roleId <= 3");
+      $response->setFetchMode( PDO::FETCH_CLASS, "User");   
+      $data = $response->fetchAll();
     }
     else if($role == 2){
       $response = $pdo->query("SELECT * FROM users WHERE roleId LIKE 4");
+      $response->setFetchMode(PDO::FETCH_CLASS, "User");   
+      $data = $response->fetchAll();
     }       
     
-    return $response;
+    return $data;
   }
 
   public static function getUser(int $id){
     $pdo = DataBase::connect();		
     $response = $pdo->prepare("SELECT * FROM users WHERE id = :id");
-    $response->execute(array(':id' => $id));
+    $response->execute(array(':id' => $id)); 
+    $response->setFetchMode( PDO::FETCH_CLASS, "User");   
     $data = $response->fetch();
-    
+    //retourne ARRAY clé valeur
     return $data;
   }
 
@@ -118,13 +117,31 @@ class User{
 		return password_verify($password, $this->passwordUser);      
 	}
 
+  public function getId(){
+    return $this->id;
+  }
+
+  public function getFirstName(){
+    return $this->firstName;
+  }
+
+  public function getLastName(){
+    return $this->lastName;
+  }
+
 	public function getLogin(){
 		return $this->login;
+  }
+
+  public function getEmail(){
+    return $this->email;
   }
 
   public function getRoleId(){
     return $this->roleId;
   }
+
+  
   
   public static function newUser(User $newUser){
     $pdo = DataBase::connect();
@@ -145,14 +162,7 @@ class User{
 
     $response->execute($data);
   }
-
-  public static function delete(int $id){
-    $pdo = DataBase::connect();
-    $query = "DELETE FROM users WHERE id = :id";
-    $response = $pdo->prepare($query);
-    $response->execute(array(':id' => $id));
-  }
-
+  
   public static function update(User $newUser){
     $pdo = DataBase::connect();
 
@@ -171,6 +181,13 @@ class User{
     $response = $pdo->prepare($query);
 
     $response->execute($data);
+  }
+
+  public static function delete(int $id){
+    $pdo = DataBase::connect();
+    $query = "DELETE FROM users WHERE id = :id";
+    $response = $pdo->prepare($query);
+    $response->execute(array(':id' => $id));
   }
 }
 

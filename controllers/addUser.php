@@ -13,7 +13,11 @@ if(!empty($_POST['firstName'])
       $user = $user->myConstruct($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['login'], $_POST['password'], $role);
       User::newUser($user);
 
-      $_SESSION['login'] = $_POST['login'];
+      $user = User::getLog($_POST['login'])
+
+      $_SESSION['login'] = $user->getLogin();
+      $_SESSION['roleId'] = $role;
+      $_SESSION['id'] = $user->getId();
 
       header('Location: accueil');  
   }

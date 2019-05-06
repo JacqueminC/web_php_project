@@ -33,29 +33,28 @@ require 'models/user.php';
   </thead>
   <tbody>
 <?php
-$data = new User();
-$data = $data->getAllUsers(1);
+$user = User::getAllUsers(1);
 $row = FALSE;
 
-foreach($data as $line){
+foreach($user as $line){
   
   if($row == FALSE){
     echo '<tr> <td>' . 
-    $line['id'] . '</td> <td>' .
-    $line['firstName'] . '</td> <td>' .
-    $line['lastName'] . '</td> <td>' .
-    $line['login'] . '</td> <td>' .
-    $line['email'] . '</td> <td>' .
-    $role = User::roleConvert($line['roleId']) . '</td> <td class="td-right">';
-    if($_SESSION['roleId'] <= 2 && $_SESSION['roleId'] <= $line['roleId']){
-      echo '<a href="employee?action=modify&id='. $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
+    $line->getId() . '</td> <td>' .
+    $line->getFirstName() . '</td> <td>' .
+    $line->getLastName() . '</td> <td>' .
+    $line->getLogin() . '</td> <td>' .
+    $line->getEmail() . '</td> <td>' .
+    $role = User::roleConvert($line->getRoleId()) . '</td> <td class="td-right">';
+    if($_SESSION['roleId'] <= 2 && $_SESSION['roleId'] <= $line->getRoleId()){
+      echo '<a href="employee?action=modify&id='. $line->getId() .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
     }
     else{
       echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
     }
         
-    if($_SESSION['login'] != $line['login'] && $_SESSION['roleId'] <= $line['roleId'] && $_SESSION['roleId'] != 3){
-      echo '<a href="employee?action=delete&id='. $line['id'] .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+    if($_SESSION['login'] != $line->getLogin() && $_SESSION['roleId'] <= $line->getRoleId() && $_SESSION['roleId'] != 3){
+      echo '<a href="employee?action=delete&id='. $line->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
     }
     else {
       echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
@@ -64,28 +63,27 @@ foreach($data as $line){
   }
 
   if($row == TRUE){
-    echo '<tr class="table-light"> <td>' . 
-    $line['id'] . '</td> <td>' .
-    $line['firstName'] . '</td> <td>' .
-    $line['lastName'] . '</td> <td>' .
-    $line['login'] . '</td> <td>' .
-    $line['email'] . '</td> <td>' .
-    $role = User::roleConvert($line['roleId']) . '</td> <td class="td-right"> ';
-    if($_SESSION['roleId'] <= 2 && $_SESSION['roleId'] <= $line['roleId']){
-      echo '<a href="employee?action=modify&id='. $line['id'] .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
+    echo '<tr> <td>' . 
+    $line->getId() . '</td> <td>' .
+    $line->getFirstName() . '</td> <td>' .
+    $line->getLastName() . '</td> <td>' .
+    $line->getLogin() . '</td> <td>' .
+    $line->getEmail() . '</td> <td>' .
+    $role = User::roleConvert($line->getRoleId()) . '</td> <td class="td-right">';
+    if($_SESSION['roleId'] <= 2 && $_SESSION['roleId'] <= $line->getRoleId()){
+      echo '<a href="employee?action=modify&id='. $line->getId() .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
     }
     else{
       echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
     }
         
-    if($_SESSION['login'] != $line['login'] && $_SESSION['roleId'] <= $line['roleId'] && $_SESSION['roleId'] != 3){
-      echo '<a href="employee?action=delete&id='. $line['id'] .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+    if($_SESSION['login'] != $line->getLogin() && $_SESSION['roleId'] <= $line->getRoleId() && $_SESSION['roleId'] != 3){
+      echo '<a href="employee?action=delete&id='. $line->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
     }
     else {
       echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
     }
     echo '</td> </tr>';
-   
   }
 
   if($row == FALSE){

@@ -10,6 +10,7 @@ if(!empty($_POST['login']) && !empty($_POST['password'])){
   if($user && $user->validatePassword($_POST['password'])){     
     $_SESSION['login'] = $user->getLogin();
     $_SESSION['roleId'] = $user->getRoleId(); 
+    $_SESSION['id'] = $user->getId();
     header('Location: accueil'); 
   } 
   else {   

@@ -20,7 +20,7 @@ if($_GET['action'] == 'create'){
   }  
 }
 else if ($_GET['action'] == 'modify'){
-  require 'views/modifyEmployee.php';
+  require 'views/updateEmployee.php';
 }
 else if ($_GET['action'] == 'delete') {
   require 'views/deleteEmployee.php';

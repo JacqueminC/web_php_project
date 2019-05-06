@@ -31,7 +31,8 @@ id INT AUTO_INCREMENT PRIMARY KEY,
 productName VARCHAR(100) NOT NULL UNIQUE,
 price DOUBLE (6,3) NOT NULL,
 categorieId INT,
-imageLink VARCHAR(100),
+description VARCHAR(100),
+imageLink VARCHAR(200),
 FOREIGN KEY (categorieId) REFERENCES categories (id)
 )ENGINE=INNODB;
 
@@ -81,9 +82,9 @@ INSERT INTO categories VALUES
 (3, "jeux de plateaux");
 
 INSERT INTO products VALUES
-(1, "Dice Forge", 40, 1,''),
-(2, "Zcoprs", 50, 2,''),
-(3, "Descent", 90, 3,'');
+(1, "Dice Forge", 40, 1,'Ajouter déscirption',''),
+(2, "Zcoprs", 50, 2,'Ajouter déscirption',''),
+(3, "Descent", 90, 3,'Ajouter déscirption','');
 
 INSERT INTO statuts VALUES
 (1, "En attente"),
