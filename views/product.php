@@ -31,8 +31,7 @@ require 'models/product.php'
   </thead>
   <tbody>
 <?php
-$data = new Product();
-$data = $data->getAll();
+$data = Product::getAll();
 $row = FALSE;
 
 foreach($data as $line){

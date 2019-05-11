@@ -5,20 +5,6 @@ if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
 }
 ?>
 
-<div class="row">
-  <div class="col-0">
-  
-<?php
-  if($_SESSION['roleId'] <= 2){
-    echo '<a href="addEmployee"><button type="button" class="btn btn-success">Ajouter</button> </a>';
-  }
-  else {
-    echo '<button type="button" class="btn btn-success disabled">Ajouter</button>';
-  }
-?>
-  </div>    
-</div>
-
 <table class="table table-sm">
   <thead>
     <tr>

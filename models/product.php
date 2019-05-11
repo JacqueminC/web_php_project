@@ -20,7 +20,7 @@ Class Product{
     return $this;
   }
   
-  public function getAll(){
+  public static function getAll(){
     $pdo = DataBase::connect();
 
     $response = $pdo->query("SELECT * FROM products"); 
