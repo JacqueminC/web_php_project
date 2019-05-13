@@ -1,8 +1,5 @@
 <?php 
 require 'layout/header.php';
-if(empty($_SESSION['roleId'])){
-  header('Location: index');
-}
 ?>
 
 <h2>Mon compte</h2>

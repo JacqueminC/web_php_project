@@ -1,7 +1,4 @@
 <?php 
-if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 2){
-  header('Location: index');
-}
 require 'layout/header.php';
 require 'models/user.php';
 $id = $_GET['id'];

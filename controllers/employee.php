@@ -1,4 +1,7 @@
 <?php
+if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 2){
+  header('Location: index');
+}
 if($_GET['action'] == 'create'){
   if(!empty($_POST['firstName']) 
     && !empty($_POST['lastName']) 

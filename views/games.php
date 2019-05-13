@@ -1,7 +1,4 @@
 <?php 
-if(empty($_SESSION['roleId'])){
-  header('Location: index');
-}
 require 'layout/header.php';
 require 'models/product.php';
 ?>
@@ -29,26 +26,23 @@ $produit = Product::GetAll();
 $row = FALSE;
 
 foreach($produit as $line){
-  
+  echo '<tr>';
   if($row == FALSE){
-    echo '<tr id="limite"> <td id="drag"> <div class="imgTmp" </div>' . 
-    $line->getImageLink() . '</td> <td >' .
-    $line->getProductName() . '</td> <td>' .
-    Product::categorieConvert($line->getCategorieId()) . '</td> <td>' .
-    number_format($line->getPrice(), 2, ',', ' ') . '€</td> <td id="drop">';
-    echo ' <div class="dropZone"> déplacer l\'image ici pour ajouter au panier </div> </td>' ;    
-    echo '</tr>';
+    echo '<td class="drag"> </img class="img" src="https://www.w3schools.com/images/w3schools_green.jpg"> </img> </td>';
+    echo '<td>' . $line->getProductName() . '</td>';
+    echo '<td>' . Product::categorieConvert($line->getCategorieId()) . '</td>';
+    echo '<td>' . number_format($line->getPrice(), 2, ',', ' ') . '€</td> ';
+    echo '<td class="drop"> <div class="dropZone"> déplacer l\'image ici pour ajouter au panier </div> </td>' ;  
   }
 
   if($row == TRUE){
-    echo '<tr id="limite"> <td id="drag"> <div class="imgTmp" </div>' .  
-    $line->getImageLink() . '</td> <td id="drag">' .
-    $line->getProductName() . '</td> <td>' .
-    Product::categorieConvert($line->getCategorieId()) . '</td> <td>' .
-    number_format($line->getPrice(), 2, ',', ' ') . '€</td> <td id="drop">';
-    echo ' <div class="dropZone"> déplacer l\'image ici pour ajouter au panier </div> </td>' ;    
-    echo '</tr>';
+    echo '<td class="drag"> <div class="img"> </div> </td>';
+    echo '<td>' . $line->getProductName() . '</td>';
+    echo '<td>' . Product::categorieConvert($line->getCategorieId()) . '</td>';
+    echo '<td>' . number_format($line->getPrice(), 2, ',', ' ') . '€</td> ';
+    echo '<td class="drop"> <div class="dropZone"> déplacer l\'image ici pour ajouter au panier </div> </td>' ;     
   }
+  echo '</tr>';
 
   if($row == FALSE){
     $row = TRUE;
@@ -63,20 +57,25 @@ foreach($produit as $line){
   </tbody>
 </table>
 
-
-<script>
-  $("#drag").draggable({
-    containment : '#limite',
+<?php 
+if(!empty($_SESSION['login'])){
+  echo '<script>
+  $(".drag").draggable({
+    containment : ".limite",
     revert: true
   });
-  $('#drop').droppable({
+  $(".drop").droppable({
     drop : function(){
-      $("#drop")
+      $(".drop")
          .addClass("colorChange")
          .addClass("bounce");
     }
   });
-</script>
+</script>';
+}
+
+?>
+
     
 
 

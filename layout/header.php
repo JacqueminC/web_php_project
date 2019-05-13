@@ -20,7 +20,7 @@ if (session_status() == PHP_SESSION_NONE) {
 //print_r($hash)
 ?>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="menu">
   <a class="navbar-brand" href="accueil">Board Game</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <a href="games" class="nav-link">Jeux</a>
       </li>
       
-      <?php       
+      <?php   
         if(!empty($_SESSION['roleId'])){
           echo '<li class="nav-item">
           <a class="nav-link" href="account">Mon Compte</a>
@@ -48,15 +48,16 @@ if (session_status() == PHP_SESSION_NONE) {
         }
       ?>      
     </ul>
-    <?php       
+    <?php           
       if(empty($_SESSION['login'])){
         echo "<a href=\"login\"> <button type=\"button\" class=\"btn btn-outline-success\">Connexion</button> </a>";
         echo "<a href=\"inscription\"> <button type=\"button\" class=\"btn btn-outline-info\">Inscription</button> </a>";
       }
       else 
-      {
+      {        
         echo '<h4 class="h4-log">'. $_SESSION['login'] . '</h4>';
-        echo "<a href=\"logout\"> <button type=\"button\" class=\"btn btn-outline-warning\">Déconnexion</button> </a>";
+        echo '<a href="basket">  <div class drop> <button type="button" class="btn btn-outline-info">Panier</button> </div> </a>';
+        echo "<a href=\"logout\"> <button type=\"button\" class=\"btn btn-outline-warning\">Déconnexion</button> </a>";        
       }
     ?>
   </div>

@@ -1,18 +1,19 @@
 <?php
+if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
+  header('Location: index');
+}
 if($_GET['action'] == 'create'){
   if(!empty($_POST['productName']) &&
   !empty($_POST['price']) &&
   !empty($_POST['categorieId'])){
     require 'models/product.php';
 
-    $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+    $extensions_valides = array( 'jpg' , 'jpeg', 'png' );
     //1. strrchr renvoie l'extension avec le point (« . »).
     //2. substr(chaine,1) ignore le premier caractère de chaine.
     //3. strtolower met l'extension en minuscules.
     $extension_upload = strtolower(  substr(  strrchr($_FILES['image']['name'], '.')  ,1)  );
-    $image_sizes = getimagesize($_FILES['image']['tmp_name']);
-    $path = "./Images/jeux";
-    $name = $_FILES['image']['name'];
+    $image_sizes = getimagesize($_FILES['image']['tmp_name']);     
     $maxsize = 1048576;
     $maxwidth = 2048;
     $maxheight = 2048;
@@ -20,24 +21,32 @@ if($_GET['action'] == 'create'){
 
     if ($_FILES['image']['error'] > 0){
       echo "Erreur lors du transfert";
-      header('Location: admin?info=transfert');
+      header('Location: admin?case=product');
     } 
     if ($_FILES['image']['size'] > $maxsize){
       echo "Le fichier est trop gros"; 
     }    
     if (in_array($extension_upload,$extensions_valides)) echo "Extension correcte";    
     if ($image_sizes[0] > $maxwidth OR $image_sizes[1] > $maxheight) echo "Image trop grande";    
-    $resultat = move_uploaded_file($_FILES['image']['tmp_name'],$path);
-    if ($resultat) echo "Transfert réussi de " . $_FILES['image']['tmp_name'];
+    
 
 
     $product = new Product();   
     $product = $product->myConstruct(0,$_POST['productName'], $_POST['price'], $_POST['categorieId'], $_POST['description']);
-    $product->addPath($name);
-    //$product = $product->addPath($name);
     
     Product::newProduct($product);
-    
+
+    $name = $product->getId() . $_FILES['image']['name'];
+    $path = "./Images/jeux/" . $name;
+
+    $resultat = move_uploaded_file($_FILES['image']['tmp_name'],$path);
+    if ($resultat){
+      echo "Transfert réussi de " . $name;
+      $product->setImageLink($name);
+      echo $product->getImageLink();
+      // echo $product->getImaeLink();
+      Product::update($product);      
+    }
     header('Location: admin?case=product');
   }
   else {

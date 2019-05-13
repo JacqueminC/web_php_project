@@ -16,9 +16,10 @@ button{
   color: white;
 }
 
-.imgTmp{
+.img{
+  border: solid 2px black;
   background-color: black;
-  height:  100px;
+  height: 100px;
   width: 100px;
 }
 
@@ -43,4 +44,14 @@ button{
   transform-origin: 50% 100%;
   -ms-transform-origin: 50% 100%;
   -webkit-transform-origin: 50% 100%;
+}
+
+#menu {
+  position: fixed;
+  width: 100%;
+  z-index: 1;  
+}
+
+.container{
+  padding-top: 75px;
 }

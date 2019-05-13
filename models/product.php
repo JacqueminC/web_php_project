@@ -15,13 +15,10 @@ Class Product{
     $this->productName = $productName;
     $this->price = $price;
     $this->categorieId = $categorieId;
-    $this->description = $description;    
+    $this->description = $description;  
+    $this->imageLink = '';  
 
     return $this;
-  }
-
-  public function addPath(String $path){
-    $this->imageLink = $path;
   }
   
   public static function getAll(){
@@ -68,16 +65,27 @@ Class Product{
       'productName' => $product->productName,
       'price' => $product->price,
       'categorieId' => $product->categorieId,
-      'description' => $product->description,
-      'imageLink' => $product->imageLink
+      'description' => $product->description
     ];
 
-    $query = "INSERT INTO products (productName, price, categorieId, description, imageLink) 
-    VALUE (:productName, :price, :categorieId, :description, :imageLink)";
+    $query = "INSERT INTO products (productName, price, categorieId, description) 
+    VALUE (:productName, :price, :categorieId, :description)";
 
     $response = $pdo->prepare($query);
 
     $response->execute($data);
+
+    $id = Product::getIdDB($product->getProductName()); 
+    $product->setId($id);
+  }
+
+  public static function getIdDB($productName){
+    $pdo = DataBase::connect();		
+    $response = $pdo->prepare("SELECT id FROM products WHERE productName = :productName");
+    $response->execute(array(':productName' => $productName)); 
+    $data = $response->fetch();
+    
+    return $data['id'];
   }
 
   public static function update(Product $product){
@@ -88,11 +96,10 @@ Class Product{
       'productName' => $product->productName,
       'price' => $product->price,
       'categorieId' => $product->categorieId,
-      'description' => $product->description
+      'description' => $product->description,
+      'imageLink' => $product->imageLink
     ];
-    $query = "UPDATE products 
-              SET productName = :productName, price = :price, categorieId = :categorieId, description = :description
-              WHERE id = :id";
+    $query = "UPDATE products SET productName = :productName, price = :price, categorieId = :categorieId, description = :description, imageLink = :imageLink WHERE id = :id";
 
     $response = $pdo->prepare($query);
 
@@ -123,6 +130,14 @@ Class Product{
   }
   public function getImageLink(){
     return $this->imageLink;
+  }
+
+  public function setId($id){
+    $this->id = $id;
+  }
+
+  public function setImageLink($imageLink){
+    $this->imageLink = $imageLink;
   }
 
 }

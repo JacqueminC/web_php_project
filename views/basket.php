@@ -1,41 +1,29 @@
-<?php
-if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
-  header('Location: index');
-}
+<?php 
 require 'models/product.php';
+require 'models/orderDetails.php';
+require 'layout/header.php';
 ?>
 
-<div class="row">
-  <div class="col-0">
-  
-<?php
-  if($_SESSION['roleId'] <= 2){
-    echo '<a href="product?action=create"><button type="button" class="btn btn-success">Ajouter</button> </a>';
-  }
-  else {
-    echo '<button type="button" class="btn btn-success disabled">Ajouter</button>';
-  }
-?>
-  </div>    
-</div>
+<h2>Panier</h2>
 
 <table class="table table-sm">
   <thead>
     <tr>
-      <th scope="col">Id</th>
       <th scope="col">Nom</th>
+      <th scope="col">Catégorie</th>      
       <th scope="col">Prix</th>
-      <th scope="col">Catégorie</th>
       <th scope="col" class="tr-right">Action</th>
     </tr>
   </thead>
   <tbody>
+
 <?php
-$data = Product::getAll();
+$data = OrderDetails::getOrder($_SESSION['id']);
 $row = FALSE;
 
-foreach($data as $line){
+foreach($data as $prod){
 
+  $line = Product::getProduct($prod->getId());
 
   if($row == FALSE){
     echo '<tr> <td>' . 
@@ -44,14 +32,8 @@ foreach($data as $line){
     number_format($line->getPrice(), 2, ',', ' ') . '€</td> <td>' .
     $cat = Product::categorieConvert($line->getCategorieId()) . '</td> <td class="td-right">';
 
-    echo '<a href="product?action=update&id=' . $line->getId() .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
-        
-    if($_SESSION['roleId'] <= 3){
-      echo '<a href="product?action=delete&id=' . $line->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
-    }
-    else {
-      echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
-    }
+    
+    echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
     echo '</td> </tr>';
   }
   
@@ -80,6 +62,8 @@ foreach($data as $line){
     $row = FALSE;
   } 
 }
-?>  
-  </tbody>
-</table> 
+?>
+
+<?php 
+require 'layout/footer.php';
+?>

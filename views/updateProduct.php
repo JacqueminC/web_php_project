@@ -27,6 +27,7 @@ if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
           </select>   
             <label for="exampleTextarea">Description</label>
             <textarea class="form-control"  name="description" id="exampleTextarea" value="<?php echo $product->getDescription() ?>" rows="3" style="height: 107px;"> <?php echo $product->getDescription() ?></textarea>
+            <input type="text" name="imageLink" class="form-control" value="<?php echo $product->getImageLink() ?>" placeholder="link" required>
         </div>
         </div>
 

@@ -1,8 +1,5 @@
 <?php 
 require 'layout/header.php';
-if(!empty($_SESSION['login'])){
-  header('Location: index');
-}
 
 if(isset($_SESSION['registerSuccess']) && $_SESSION['registerSuccess'] == 'error'){
 echo '<div class="alert alert-dismissible alert-warning">

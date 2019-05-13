@@ -1,4 +1,7 @@
 <?php
+if(!empty($_SESSION['login'])){
+  header('Location: index');
+}
 require 'models/user.php';
 
 if(!empty($_POST['firstName']) 
