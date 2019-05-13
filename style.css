@@ -15,3 +15,32 @@ button{
   font-weight: bold;
   color: white;
 }
+
+.imgTmp{
+  background-color: black;
+  height:  100px;
+  width: 100px;
+}
+
+.dropZone{
+  height:  100px;
+  width: 100px;
+}
+
+.colorChange {
+  background: #51ec4b;
+  color: #51ec4b;
+  transition: 1s;
+}
+
+.bounce {
+  animation-name: bounce;
+  -webkit-animation-name: bounce;
+  animation-duration: 1.6s;
+  -webkit-animation-duration: 1.6s;
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+}

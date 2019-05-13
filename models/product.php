@@ -15,9 +15,13 @@ Class Product{
     $this->productName = $productName;
     $this->price = $price;
     $this->categorieId = $categorieId;
-    $this->description = $description;
+    $this->description = $description;    
 
     return $this;
+  }
+
+  public function addPath(String $path){
+    $this->imageLink = $path;
   }
   
   public static function getAll(){
@@ -64,11 +68,12 @@ Class Product{
       'productName' => $product->productName,
       'price' => $product->price,
       'categorieId' => $product->categorieId,
-      'description' => $product->description
+      'description' => $product->description,
+      'imageLink' => $product->imageLink
     ];
 
-    $query = "INSERT INTO products (productName, price, categorieId, description) 
-    VALUE (:productName, :price, :categorieId, :description)";
+    $query = "INSERT INTO products (productName, price, categorieId, description, imageLink) 
+    VALUE (:productName, :price, :categorieId, :description, :imageLink)";
 
     $response = $pdo->prepare($query);
 

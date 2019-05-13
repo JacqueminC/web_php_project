@@ -10,7 +10,7 @@ require 'models/product.php';
 
 <div class="d-flex justify-content-center">
 
-  <form action="product?action=create" method="post">
+  <form action="product?action=create" enctype="multipart/form-data" method="post">
       <div class="form-group">
         <div class="col">
           <input type="text" name="productName" class="form-control" value="<?php echo @$_POST['productName'] ?>" placeholder="Nom" required>
@@ -25,7 +25,14 @@ require 'models/product.php';
             <label for="exampleTextarea" >Description</label>
             <textarea class="form-control" name="description" value="<?php echo @$_POST['description'] ?>" placeHolder="Description" rows="3" style="height: 107px;"></textarea>
           </div>  
+
+          <label for="image" >
+          Ajoutez une photo (formats supportes : .png, .jpeg, .jpg, .gif
+          | taille maximale : 3 Mo) :<br />
+          </label>
+          <input type="file" name="image" />
         </div>
+
 
       </div>
       <div class="row">

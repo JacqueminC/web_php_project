@@ -32,7 +32,7 @@ echo '<tr>
 <td>Catégorie:</td>
 <td>' . Product::categorieConvert($product->getCategorieId()) .'</td>
 </tr>
-<td>Déscription:</td>
+<td>Description:</td>
 <td>' . $product->getDescription() .'</td>
 </tr>';
 ?>  
