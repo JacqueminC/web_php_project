@@ -4,9 +4,7 @@ require 'models/product.php';
 $id = $_GET['id'];
 $product = Product::getProduct($id);
 
-if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
-  header('Location: admin?case=product');
-}
+
 ?>
 
 <h3 class="text-center">Modifier produit</h3>

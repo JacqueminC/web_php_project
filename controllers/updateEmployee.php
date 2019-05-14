@@ -1,4 +1,7 @@
 <?php
+if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 2){
+  header('Location: admin?case=employee');
+}
 require 'models/user.php';
 $id = $_GET['id'];
 $user = new User();

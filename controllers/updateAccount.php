@@ -1,4 +1,7 @@
 <?php 
+if(empty($_SESSION['roleId'])){
+  header('Location: account?case=infoAccount');
+}
 if($_GET['state'] == 'ok'){
   if(!empty($_POST['firstName']) 
   && !empty($_POST['lastName']) 

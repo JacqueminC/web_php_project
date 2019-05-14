@@ -1,7 +1,4 @@
 <?php 
-if(empty($_SESSION['roleId'])){
-  header('Location: account?case=infoAccount');
-}
 require 'layout/header.php';
 require 'models/user.php';
 $user = User::getLog($_SESSION['login']);
