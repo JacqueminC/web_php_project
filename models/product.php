@@ -1,5 +1,4 @@
 <?php
-require 'dataBase.php';
 
 Class Product{
   private $id;

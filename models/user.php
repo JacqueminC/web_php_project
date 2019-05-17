@@ -1,5 +1,4 @@
 <?php
-require 'dataBase.php';
 
 class User{
 	private $id;

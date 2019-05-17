@@ -1,6 +1,4 @@
 <?php 
-require 'models/product.php';
-require 'models/orderDetails.php';
 require 'layout/header.php';
 ?>
 
@@ -18,7 +16,7 @@ require 'layout/header.php';
   <tbody>
 
 <?php
-$data = OrderDetails::getOrder($_SESSION['id']);
+
 $row = FALSE;
 
 foreach($data as $prod){
