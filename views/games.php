@@ -1,6 +1,5 @@
 <?php 
 require 'layout/header.php';
-require 'models/product.php';
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -22,13 +21,13 @@ require 'models/product.php';
   </thead>
   <tbody>
 <?php 
-$produit = Product::GetAll();
+
 $row = FALSE;
 
 foreach($produit as $line){
   echo '<tr>';
   if($row == FALSE){
-    echo '<td class="drag"> </img class="img" src="https://www.w3schools.com/images/w3schools_green.jpg"> </img> </td>';
+    echo '<td class="drag"> <div class="img"> </div> </td>';
     echo '<td>' . $line->getProductName() . '</td>';
     echo '<td>' . Product::categorieConvert($line->getCategorieId()) . '</td>';
     echo '<td>' . number_format($line->getPrice(), 2, ',', ' ') . '€</td> ';

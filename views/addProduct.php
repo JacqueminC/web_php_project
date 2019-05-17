@@ -24,8 +24,7 @@ require 'models/product.php';
           </div>  
 
           <label for="image" >
-          Ajoutez une photo (formats supportes : .png, .jpeg, .jpg, .gif
-          | taille maximale : 3 Mo) :<br />
+          Ajoutez une photo (formats supportes : .png, .jpeg, .jpg | taille maximale : 3 Mo) :<br />
           </label>
           <input type="file" name="image" />
         </div>
