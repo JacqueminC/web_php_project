@@ -9,7 +9,7 @@ Class OrderDetails{
 
   public static function getBasketById(int $id){
     $pdo = DataBase::connect();		
-    $response = $pdo->prepare("SELECT od.id, od.orderId, od.productId, od.price FROM orderDetails AS od INNER JOIN orders AS o WHERE o.idOrder = :id AND o.idOrder = od.orderId AND o.statutId = 5;");
+    $response = $pdo->prepare("SELECT od.id, od.orderId, od.productId, od.price FROM orderDetails AS od INNER JOIN orders AS o WHERE o.userId = :id AND o.idOrder = od.orderId AND o.statutId = 5;");
     $response->execute(array(':id' => $id));
     $response->setFetchMode( PDO::FETCH_CLASS, "OrderDetails");  
     $data = $response->fetchAll(); 
@@ -24,11 +24,11 @@ Class OrderDetails{
     $response->execute(array(':id' => $id));
   }
 
-  public static function sendOrder(int $id){
+  public static function sendOrder(int $orderId){
     $pdo = DataBase::connect();    
-    $query = "UPDATE orderDetails SET statutID = 1 WHERE id = :id";
+    $query = "UPDATE orders SET statutId = 1 WHERE idOrder = :orderId";
     $response = $pdo->prepare($query);
-    $response->execute(array(':id' => $id));
+    $response->execute(array(':orderId' => $orderId));
   }
 
   public function getId(){

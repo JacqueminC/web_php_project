@@ -16,38 +16,27 @@ require 'layout/header.php';
 
 <?php
 
-$row = FALSE;
+foreach($data as $order){  
 
-foreach($data as $prod){  
-
-  if($row == FALSE){
     echo '<tr> <td>' . 
-    $prod->getProductNameById($prod->getProductId()) . '</td> <td>' .
-    number_format($prod->getPrice(), 2, ',', ' ') . '€</td> <td class="td-right">';
-    echo '<a href="OrderDelete?case=1&id='. $prod->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+    $order->getProductNameById($order->getProductId()) . '</td> <td>' .
+    number_format($order->getPrice(), 2, ',', ' ') . '€</td> <td class="td-right">';
+    echo '<a href="orderDelete?id='. $order->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
 
     echo '</td> </tr>';
-  }
-  
-  if($row == TRUE){
-    echo '<tr> <td>' . 
-    $prod->getProductNameById($prod->getProductId()) . '</td> <td>' .
-    number_format($prod->getPrice(), 2, ',', ' ') . '€</td> <td class="td-right">';
-    echo '<a href=""><button type="button" class="btn btn-danger"> Supprimer</button></a>';
 
-    echo '</td> </tr>';
-  }
-
-  if($row == FALSE){
-    $row = TRUE;
-  } 
-  else{
-    $row = FALSE;
-  } 
 }
-  echo '<tr> <td> TOTAL </td>
-  <td>' . number_format($total, 2, ',', ' ') . '€</td>
-  <td class="td-right"> <a href=""><button type="button" class="btn btn-success">Commander</button> </a></td> </tr>';
+  echo '<tr class="table-active"> <td> TOTAL </td>
+  <td>' . number_format($total, 2, ',', ' ') . '€</td>';
+  echo '<td class="td-right"> ';
+  if ($count > 0) {
+    echo '<a href="confirmation?orderId=' . $orderId . '"><button type="button" class="btn btn-success">Commander</button> </a>';
+  }
+  else {
+    echo '<button type="button" class="btn btn-success disabled">Panier vide</button>';
+  }
+  echo '</td> </tr>';
+  
 ?>
   </tbody>
 </table>

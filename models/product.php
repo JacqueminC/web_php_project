@@ -110,19 +110,19 @@ Class Product{
     $pdo = DataBase::connect();		
 
     // est-ce l'order existe?
-    $response = $pdo->prepare("SELECT count(idOrder) FROM orders WHERE userId = :id and statutId = 5");
+    $response = $pdo->prepare("SELECT count(idOrder) FROM orders WHERE userId = :id AND statutId = 5");
     $response->execute(array(':id' => $id)); 
     $data = $response->fetch();
 
     // si pas on la crée
-    if($data < 0){
+    if($data['idOrder'] == 0){
       $query = "INSERT INTO orders (userId, statutId) 
       VALUE (:id, 5)";  
       $response = $pdo->prepare($query);
       $response->execute(array(':id' => $id));
     }
 
-    // ensuite on recupérer l'id de l'order
+    // ensuite on recupérer l'id de l'order (idOrder)
     $response = $pdo->prepare("SELECT idOrder FROM orders WHERE userId = :id and statutId = 5");
     $response->execute(array(':id' => $id)); 
     $data = $response->fetch();
