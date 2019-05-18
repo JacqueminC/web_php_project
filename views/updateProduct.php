@@ -11,7 +11,7 @@ $product = Product::getProduct($id);
 
 <div class="d-flex justify-content-center">
 
-  <form action="updateProduct?id=<?php echo $product->getId() ?>" method="post">
+  <form action="updateProduct?id=<?php echo $product->getId() ?>" enctype="multipart/form-data" method="post">
     <div class="row">
       <div class="form-group">
         <div class="col">
@@ -25,11 +25,14 @@ $product = Product::getProduct($id);
           </select>   
             <label for="exampleTextarea">Description</label>
             <textarea class="form-control"  name="description" id="exampleTextarea" value="<?php echo $product->getDescription() ?>" rows="3" style="height: 107px;"> <?php echo $product->getDescription() ?></textarea>
-            <input type="text" name="imageLink" class="form-control" value="<?php echo $product->getImageLink() ?>" placeholder="link" required>
+            <input class="form-control" id="readOnlyInput" value="<?php echo $product->getImageLink() ?>" placeholder="Link" readonly="">
+            <label for="image" >
+            Ajoutez une photo (formats supportes : .png, .jpeg, .jpg | taille maximale : 3 Mo) :<br />
+            </label>
+            <input type="file" name="img">
         </div>
-        </div>
-
       </div>
+    </div>
       <div class="row">
         <div class="col">          
           <a href="admin?case=product"><button type="button" class="btn btn-secondary">Retour</button></a>

@@ -26,11 +26,10 @@ require 'models/product.php';
           <label for="image" >
           Ajoutez une photo (formats supportes : .png, .jpeg, .jpg | taille maximale : 3 Mo) :<br />
           </label>
-          <input type="file" name="image" />
+          <input type="file" name="image">
         </div>
-
-
       </div>
+      
       <div class="row">
         <div class="col offset-1">          
           <a href="admin?case=product"><button type="button" class="btn btn-secondary">Retour</button></a>

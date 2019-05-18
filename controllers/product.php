@@ -45,7 +45,6 @@ if($_GET['action'] == 'create'){
       echo "Transfert réussi de " . $name;
       $product->setImageLink($name);
       echo $product->getImageLink();
-      // echo $product->getImaeLink();
       Product::update($product);      
     }
     header('Location: admin?case=product');

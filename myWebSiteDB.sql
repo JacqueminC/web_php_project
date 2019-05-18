@@ -93,6 +93,8 @@ INSERT INTO statuts VALUES
 (4, "Refusée");
 INSERT INTO statuts VALUES
 (5, "Panier");
+INSERT INTO statuts VALUES
+(6, "Terminée");
 
 INSERT INTO orders VALUES
 (1, 1, 5);

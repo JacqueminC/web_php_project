@@ -11,7 +11,13 @@ require 'layout/header.php';
       <a class="nav-link" href="?case=customer">Clients</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="?case=product">Commandes</a>
+      <a class="nav-link" href="?case=product">Produits</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="">Commandes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="">Ventes</a>
     </li>
   </ul>
 </div>
