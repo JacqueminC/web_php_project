@@ -105,6 +105,41 @@ Class Product{
     $response->execute($data);
   }
 
+  public static function addGameBasket(Product $product){
+    $id = $_SESSION['id'];
+    $pdo = DataBase::connect();		
+
+    // est-ce l'order existe?
+    $response = $pdo->prepare("SELECT count(idOrder) FROM orders WHERE userId = :id and statutId = 5");
+    $response->execute(array(':id' => $id)); 
+    $data = $response->fetch();
+
+    // si pas on la crée
+    if($data < 0){
+      $query = "INSERT INTO orders (userId, statutId) 
+      VALUE (:id, 5)";  
+      $response = $pdo->prepare($query);
+      $response->execute(array(':id' => $id));
+    }
+
+    // ensuite on recupérer l'id de l'order
+    $response = $pdo->prepare("SELECT idOrder FROM orders WHERE userId = :id and statutId = 5");
+    $response->execute(array(':id' => $id)); 
+    $data = $response->fetch();
+
+    // on ajoute l'orderDetail du produit
+    $newData = [
+      'orderId' => $data['idOrder'],
+      'productId' => $product->getId(),
+      'price' => $product->getPrice()
+    ];
+
+    $query = "INSERT INTO orderDetails (orderId, productId, price) 
+    VALUE (:orderId, :productId, :price)";
+    $response = $pdo->prepare($query);
+    $response->execute($newData);
+  }
+
   public static function delete(int $id){
     $pdo = DataBase::connect();
     $query = "DELETE FROM products WHERE id = :id";

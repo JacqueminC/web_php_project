@@ -1,4 +1,5 @@
 <?php	
+ require 'models/dataBase.php';
 
 
 if(!empty($_POST['login']) && !empty($_POST['password'])){

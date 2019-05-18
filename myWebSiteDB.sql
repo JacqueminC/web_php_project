@@ -42,7 +42,7 @@ statut VARCHAR(20) NOT NULL UNIQUE
 )ENGINE=INNODB;
 
 CREATE TABLE orders(
-id INT AUTO_INCREMENT PRIMARY KEY,
+idOrder INT AUTO_INCREMENT PRIMARY KEY,
 userId INT,
 statutId INT,
 FOREIGN KEY (userId) REFERENCES users (id),
@@ -54,7 +54,7 @@ id INT AUTO_INCREMENT PRIMARY KEY,
 orderId INT,
 productId INT,
 price DOUBLE (6,3),
-FOREIGN KEY (orderId) REFERENCES orders (id),
+FOREIGN KEY (orderId) REFERENCES orders (idOrder),
 FOREIGN KEY (productId) REFERENCES products (id)
 )ENGINE=INNODB;
 
@@ -91,11 +91,19 @@ INSERT INTO statuts VALUES
 (2, "En prépration"),
 (3, "Expédiée"),
 (4, "Refusée");
+INSERT INTO statuts VALUES
+(5, "Panier");
 
 INSERT INTO orders VALUES
-(1, 1, 1);
+(1, 1, 5);
 
 INSERT INTO orderDetails VALUES
 (1, 1, 1, 40),
 (2, 1, 3, 90);
 
+INSERT INTO orders VALUE (2, 4, 5);
+
+INSERT INTO orderDetails
+VALUES (3, 2, 1, 40),
+(4, 2, 2, 50),
+(5, 2, 3, 90);
