@@ -14,10 +14,10 @@ require 'layout/header.php';
       <a class="nav-link" href="?case=product">Produits</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="">Commandes</a>
+      <a class="nav-link" href="orderInfo">Commandes</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="">Ventes</a>
+      <a class="nav-link" href="saleGraph">Ventes</a>
     </li>
   </ul>
 </div>
@@ -28,14 +28,14 @@ require 'layout/header.php';
     if(isset($_GET['case'])){
         switch ($_GET['case']) {
             case 'employee':
-                include 'views/employee.php';
-                break;            
+              include 'views/employee.php';
+              break;            
             case 'customer':
-                include 'views/customer.php';
-                break;            
+              include 'views/customer.php';
+              break;            
             case 'product':
-                include 'views/product.php';
-                break;
+              include 'views/product.php';
+              break;
         }
     }
 ?>

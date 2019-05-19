@@ -17,6 +17,16 @@ Class OrderDetails{
     return $data;
   }
 
+  public static function getOne(int $id){
+    $pdo = DataBase::connect();		
+    $response = $pdo->prepare("SELECT * FROM orderDetails WHERE orderId = :id");
+    $response->execute(array(':id' => $id));
+    $response->setFetchMode( PDO::FETCH_CLASS, "OrderDetails");  
+    $data = $response->fetchAll();
+    
+    return $data;
+  }
+
   public static function deleteOrderById(int $id){
     $pdo = DataBase::connect();
     $query = "DELETE FROM orderDetails WHERE id = :id";
