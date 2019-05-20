@@ -1,4 +1,5 @@
 <?php
+require_once 'models/dataBase.php';
 
 Class OrderDetails{
   private $id;

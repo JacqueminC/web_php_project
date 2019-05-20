@@ -1,6 +1,5 @@
 <?php 
 require 'layout/header.php';
-require 'models/user.php';
 ?>
 
 <h1 class="text-center">Ajouter</h1>

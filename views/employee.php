@@ -2,34 +2,8 @@
 if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
   header('Location: index');
 }
-require 'models/user.php';
 
 ?>
-
-
-<!-- <input id="string" name="string" type="text" value="" onfocus="clearSearch()" />
-<input type="submit" value="Rechercher" onclick="searchString()" />
-<script>
-function searchString() {
-	var Sstring = $('#string').val();
-	$("td:contains('" + Sstring + "')").css("background", "lightgrey");
-	var n = $("td:contains('" + Sstring + "')").length;
-	alert( n + " occurence(s) trouvée(s)");
-	$("td:contains('" + Sstring + "')")[0].scrollIntoView(true);
-}
-function clearSearch() {
-	var Sstring = $('#string').val();
-	if (Sstring != '') {
-		$("td:contains('" + Sstring + "')").css("background", "none");
-		$('#string').val('');
-	}
-}
-</script> -->
-
-
-
-
-
 
 <div class="row">
   <div class="col-0">
@@ -59,7 +33,6 @@ function clearSearch() {
   </thead>
   <tbody>
 <?php
-$user = User::getAllUsers(1);
 $row = FALSE;
 
 foreach($user as $line){

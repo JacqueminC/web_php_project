@@ -1,5 +1,4 @@
 <?php
-require 'models/user.php';
 if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
   header('Location: index');
 }
@@ -19,7 +18,6 @@ if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
   </thead>
   <tbody>
 <?php
-$user = User::getAllUsers(2);
 $row = FALSE;
 
 foreach($user as $line){

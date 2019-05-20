@@ -2,7 +2,6 @@
 if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
   header('Location: index');
 }
-require 'models/product.php';
 ?>
 
 <div class="row">
@@ -31,7 +30,6 @@ require 'models/product.php';
   </thead>
   <tbody>
 <?php
-$data = Product::getAll();
 $row = FALSE;
 
 foreach($data as $line){

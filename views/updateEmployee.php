@@ -1,8 +1,5 @@
 <?php 
 require 'layout/header.php';
-require 'models/user.php';
-$id = $_GET['id'];
-$user = User::getUser($id);
 ?>
 
 <h1 class="text-center">Modifier</h1>
