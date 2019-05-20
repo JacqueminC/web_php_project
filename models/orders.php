@@ -51,7 +51,7 @@ Class Orders{
       'statutId' => $orders->statutId
     ];
 
-    $query = "UPDATE orders SET statutId = :statutId WHERE idOrder = :idOrder";
+    $query = "UPDATE orders SET statutId = :statutId, dateOrder = NOW() WHERE idOrder = :idOrder";
     $response = $pdo->prepare($query);
     $response->execute($data);
   }

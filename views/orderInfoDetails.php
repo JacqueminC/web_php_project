@@ -4,6 +4,9 @@ require 'layout/header.php';
 
 <h2>Commande en cours</h2>
 
+<?php 
+  if ($stautId != 6){
+?>
 <p>Choisisez un statut</p>
 <form action="updateOrder?orderId=<?php echo $orderId ?>" method="post">
   <select name="statutId" class="custom-select">
@@ -16,10 +19,12 @@ require 'layout/header.php';
   </select>  
   <div class="row">
   <div class="col">          
-    <a href="orderInfo"><button type="button" class="btn btn-secondary">Retour</button></a>
     <button type="submit" class="btn btn-success">Modifier</button>
   </div>     
 </form>
+<?php
+}
+?>
 
    
 </div>
@@ -34,7 +39,6 @@ require 'layout/header.php';
   <tbody>
 <?php 
 
-
 foreach($orderDetails as $line){
   $product = Product::getProduct($line->getProductId());
   echo '<tr>';
@@ -48,6 +52,7 @@ echo '<td></td>';
 echo '<td>Total</td>';
 echo '<td>' . number_format($total, 2, ',', ' ') . '€</td>';
 echo '</tr>';
+echo '<a href="orderInfo"><button type="button" class="btn btn-secondary">Retour</button></a>';
 
 ?>
   </tbody>

@@ -49,6 +49,9 @@ FOREIGN KEY (userId) REFERENCES users (id),
 FOREIGN KEY (statutId) REFERENCES statuts (id)
 )ENGINE=INNODB;
 
+ALTER TABLE orders
+ADD dateOrder DATETIME;
+
 CREATE TABLE orderDetails(
 id INT AUTO_INCREMENT PRIMARY KEY,
 orderId INT,
