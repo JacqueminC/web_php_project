@@ -13,7 +13,7 @@ if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
       <th scope="col">Login</th>
       <th scope="col">Email</th>
       <th scope="col">Role</th>
-      <th scope="col" class="tr-right">Action</th>
+      <!-- <th scope="col" class="tr-right">Action</th> -->
     </tr>
   </thead>
   <tbody>
@@ -30,20 +30,15 @@ foreach($user as $line){
     $line->getLogin() . '</td> <td>' .
     $line->getEmail() . '</td> <td>' .
     $role = User::roleConvert($line->getRoleId()) . '</td> <td class="td-right">';
-    if($_SESSION['roleId'] <= 3){
-      echo '<a href="modifyUser?id=' .  $line->getId() .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
-    }
-    else{
-      echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
-    }
-        
-    if($_SESSION['roleId'] <=2){
-      echo '<a href="viewUser?id= ' .  $line->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
-    }
-    else {
-      echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
-    }
-    echo '</td> </tr>';
+    
+    //TO DO idea
+    // if($_SESSION['roleId'] <=2){
+    //   echo '<a href="viewUser?id= ' .  $line->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
+    // }
+    // else {
+    //   echo '<button type="button" class="btn btn-danger disabled"> Supprimer</button>';
+    // }
+    // echo '</td> </tr>';
   }
 
   if($row == TRUE){
@@ -54,13 +49,6 @@ foreach($user as $line){
     $line->getLogin() . '</td> <td>' .
     $line->getEmail() . '</td> <td>' .
     $role = User::roleConvert($line->getRoleId()) . '</td> <td class="td-right">';
-    if($_SESSION['roleId'] <= 3){
-      echo '<a href="modifyUser?id=' .  $line->getId() .'"><button type="button" class="btn btn-warning"> Modifier</button></a>';
-    }
-    else{
-      echo '<button type="button" class="btn btn-warning disabled"> Modifier</button>';
-    }
-        
     if($_SESSION['roleId'] <=2){
       echo '<a href="viewUser?id= ' .  $line->getId() .'"><button type="button" class="btn btn-danger"> Supprimer</button></a>';
     }

@@ -1,13 +1,14 @@
 <?php
-require 'models/database.php';
 if(empty($_SESSION['roleId']) || $_SESSION['roleId'] > 3){
   header('Location: index');
 }
+require 'models/product.php';
+
 if($_GET['action'] == 'create'){
   if(!empty($_POST['productName']) &&
   !empty($_POST['price']) &&
   !empty($_POST['categorieId'])){
-    require 'models/product.php';
+    
 
     $extensions_valides = array( 'jpg' , 'jpeg', 'png' );
     //1. strrchr renvoie l'extension avec le point (« . »).
@@ -54,9 +55,13 @@ if($_GET['action'] == 'create'){
   }
 }
 else if($_GET['action'] == 'update'){
+  $id = $_GET['id'];
+  $product = Product::getProduct($id);
   require 'views/updateProduct.php';
 }
 else if($_GET['action'] == 'delete'){
+  $id = $_GET['id'];
+  $product = Product::getProduct($id);
   require 'views/deleteProduct.php';
 }
 ?>

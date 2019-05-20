@@ -1,10 +1,5 @@
 <?php 
 require 'layout/header.php';
-require 'models/product.php';
-$id = $_GET['id'];
-$product = Product::getProduct($id);
-
-
 ?>
 
 <h3 class="text-center">Modifier produit</h3>

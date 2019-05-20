@@ -1,6 +1,5 @@
 <?php 
 require 'layout/header.php';
-require 'models/product.php';
 ?>
 
 <h1 class="text-center">Ajouter produit</h1>
