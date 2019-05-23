@@ -85,9 +85,11 @@ INSERT INTO categories VALUES
 (3, "jeux de plateaux");
 
 INSERT INTO products VALUES
-(1, "Dice Forge", 40, 1,'Ajouter déscirption',''),
-(2, "Zcoprs", 50, 2,'Ajouter déscirption',''),
-(3, "Descent", 90, 3,'Ajouter déscirption','');
+(1, "Dice Forge", 40, 1,'Ajouter déscirption','1diceForge'),
+(2, "Zcoprs", 50, 2,'Ajouter déscirption','2zcorps'),
+(3, "Descent", 90, 3,'Ajouter déscirption','3descentv2'),
+(4, "Catane", 40, 1, '','4Catane'),
+(5, "Carcassone", 25, 1, '','5carcassonne');
 
 INSERT INTO statuts VALUES
 (1, "En attente"),

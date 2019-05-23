@@ -15,5 +15,5 @@ foreach ($orderDetails as $info) {
   $total += $info->getPrice();
 }
 
-require 'views/orderInfoDetails.php';
+require 'views/orderInfoDetailsCustomer.php';
 ?>

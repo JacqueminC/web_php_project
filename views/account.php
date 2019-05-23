@@ -16,23 +16,6 @@ require 'layout/header.php';
   </ul>
 </div>
 
-<div class="row">  
-  <div class="col">
-<?php
-  if(isset($_GET['case'])){
-      switch ($_GET['case']) {
-          case 'infoAccount':
-              include 'views/infoAccount.php';
-              break;            
-          case 'orders':
-              include 'views/orders.php';
-              break;
-      }
-  }
-?>
-  </div>
-</div>
-
 <?php 
 require 'layout/footer.php';
 ?>

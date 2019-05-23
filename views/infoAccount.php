@@ -2,8 +2,7 @@
 if(empty($_SESSION['login'])){
   header('Location: index');
 }
-require 'models/user.php';
-$user = User::getLog($_SESSION['login']);
+
 ?>
 
 <h2 class="text-center">Mes infos</h2>

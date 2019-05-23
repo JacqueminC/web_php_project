@@ -8,10 +8,10 @@ Class Orders{
 
   public static function getONe(int $id){
     $pdo = DataBase::connect();		
-    $response = $pdo->prepare("SELECT * FROM orders WHERE idOrder = :id");
+    $response = $pdo->prepare("SELECT * FROM orders WHERE userId = :id");
     $response->execute(array(':id' => $id));
     $response->setFetchMode( PDO::FETCH_CLASS, "Orders");  
-    $data = $response->fetch();
+    $data = $response->fetchAll();
     
     return $data;
   }
@@ -57,7 +57,7 @@ Class Orders{
     $response->execute($data);
   }
 
-  public function getidOrder(){
+  public function getIdOrder(){
     return $this->idOrder;
   }
 
@@ -72,7 +72,6 @@ Class Orders{
   public function setStatutId(int $statutId){
     $this->statutId = $statutId;
   }
-
 }
 
 ?>
