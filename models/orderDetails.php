@@ -18,6 +18,19 @@ Class OrderDetails{
     return $data;
   }
 
+  public static function getThreebest(){
+    $pdo = DataBase::connect();		
+    $response = $pdo->prepare("SELECT DISTINCT od.productId, COUNT(od.productId) 
+    FROM orderDetails AS od INNER JOIN orders AS o ON o.statutId = 6 
+    WHERE od.orderId = o.idOrder 
+    GROUP BY od.productId ORDER BY COUNT(od.productId) DESC LIMIT 3");
+    $response->execute();
+    // $response->setFetchMode( PDO::FETCH_CLASS, "OrderDetails");  
+    $data = $response->fetchAll(); 
+    
+    return $data;
+  }
+
   public static function getOne(int $id){
     $pdo = DataBase::connect();		
     $response = $pdo->prepare("SELECT * FROM orderDetails WHERE orderId = :id");

@@ -8,17 +8,16 @@ Class Orders{
 
   public static function getONe(int $id){
     $pdo = DataBase::connect();		
-    $response = $pdo->prepare("SELECT * FROM orders WHERE userId = :id");
+    $response = $pdo->prepare("SELECT * FROM orders WHERE idOrder = :id");
     $response->execute(array(':id' => $id));
     $response->setFetchMode( PDO::FETCH_CLASS, "Orders");  
-    $data = $response->fetchAll();
+    $data = $response->fetch();
     
     return $data;
   }
 
   public static function getAll(){
     $pdo = DataBase::connect();
-
     $response = $pdo->query("SELECT * FROM orders where statutId != 5"); 
     $response->setFetchMode( PDO::FETCH_CLASS, "Orders");   
     $data = $response->fetchAll();   
