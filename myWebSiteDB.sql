@@ -95,22 +95,40 @@ INSERT INTO statuts VALUES
 (1, "En attente"),
 (2, "En prépration"),
 (3, "Expédiée"),
-(4, "Refusée");
-INSERT INTO statuts VALUES
-(5, "Panier");
-INSERT INTO statuts VALUES
+(4, "Refusée"),
+(5, "Panier"),
 (6, "Terminée");
 
 INSERT INTO orders VALUES
-(1, 1, 5);
+(1, 1, 6, NOW()),
+(2, 1, 6, NOW()),
+(3, 2, 6, NOW()),
+(4, 2, 6, NOW()),
+(5, 3, 6, NOW()),
+(6, 4, 6, NOW());
 
+INSERT INTO orders(idOrder, userId,StatutId) VALUES
+(7, 1, 1),
+(8, 2, 1);
+
+ 
 INSERT INTO orderDetails VALUES
 (1, 1, 1, 40),
-(2, 1, 3, 90);
-
-INSERT INTO orders VALUE (2, 4, 5);
-
-INSERT INTO orderDetails
-VALUES (3, 2, 1, 40),
-(4, 2, 2, 50),
-(5, 2, 3, 90);
+(2, 1, 4, 40),
+(3, 1, 5, 25),
+(4, 2, 1, 40),
+(5, 2, 3, 90),
+(6, 2, 4, 40),
+(7, 2, 5, 25),
+(8, 3, 1, 40),
+(9, 3, 2, 50),
+(10, 3, 5, 25),
+(11, 4, 1, 40),
+(12, 4, 4, 40),
+(13, 5, 1, 40),
+(14, 5, 4, 40),
+(15, 5, 5, 25),
+(16, 6, 1, 40),
+(17, 6, 5, 25),
+(18, 7, 1, 40),
+(19, 8, 1, 40);
