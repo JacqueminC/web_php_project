@@ -7,8 +7,7 @@ require 'layout/header.php';
 
 
 <h2>Jeux</h2>
-
-
+ 
 <table class="table table-sm">
   <thead>
     <tr>
@@ -24,19 +23,18 @@ require 'layout/header.php';
 <?php 
 
 foreach($produit as $line){
-  echo '<tr>';
-    echo '<td class="drag"> <img class="smallImg" src="./images/jeux/'. $line->getImageLink() . '"></td>';
+  echo '<tr class="drag">';
+    echo '<td><img class="smallImg" src="./images/jeux/'. $line->getImageLink() . '"></td>';
     echo '<td>' . $line->getProductName() . '</td>';
     echo '<td>' . Product::categorieConvert($line->getCategorieId()) . '</td>';
     echo '<td>' . number_format($line->getPrice(), 2, ',', ' ') . '€</td> ';
-    echo '<td> <div class="dropZone"><p class="drop">déplacer l\'image ici pour ajouter au panier</p></div> </td>';  
+    echo '<td class="drop"><div id="basket" class="smallImg"></div></td>';  
     echo '<td> <a href="detailGame?id='. $line->getId() .'"><button class="btn btn-info">Details</button></a> </td>'; 
   echo '</tr>';  
 }
 ?>
   </tbody>
 </table>
-
 
 <?php 
 require 'layout/footer.php';

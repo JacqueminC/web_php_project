@@ -116,7 +116,7 @@ Class Product{
     $data = $response->fetch();
 
     // si pas on la crée
-    if($data['idOrder'] == 0){
+    if($data[0][0] == 0){
       $query = "INSERT INTO orders (userId, statutId) 
       VALUE (:id, 5)";  
       $response = $pdo->prepare($query);

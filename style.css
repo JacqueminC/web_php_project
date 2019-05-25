@@ -23,29 +23,10 @@ button{
   width: 100px;
 }
 
-.dropZone{
+.drop{
   height:  100px;
   width: 100px;
-  border: solid 1px black;
 }
-
-/* .colorChange {
-  background: #51ec4b;
-  color: #51ec4b;
-  transition: 1s;
-}
-
-.bounce {
-  animation-name: bounce;
-  -webkit-animation-name: bounce;
-  animation-duration: 1.6s;
-  -webkit-animation-duration: 1.6s;
-  animation-timing-function: ease;
-  -webkit-animation-timing-function: ease;
-  transform-origin: 50% 100%;
-  -ms-transform-origin: 50% 100%;
-  -webkit-transform-origin: 50% 100%;
-} */
 
 .shadow-pop-tr {
 	-webkit-animation: shadow-pop-tr 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
@@ -139,8 +120,8 @@ button{
 }
 
 .smallImg{
-  height: 100px;
-  width: 100px;
+  height: 90px;
+  width: 90px;
 }
 
 .mediumImg{
