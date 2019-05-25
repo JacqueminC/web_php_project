@@ -23,62 +23,19 @@ require 'layout/header.php';
   <tbody>
 <?php 
 
-$row = FALSE;
-
 foreach($produit as $line){
   echo '<tr>';
-  if($row == FALSE){
     echo '<td class="drag"> <img class="smallImg" src="./images/jeux/'. $line->getImageLink() . '"></td>';
     echo '<td>' . $line->getProductName() . '</td>';
     echo '<td>' . Product::categorieConvert($line->getCategorieId()) . '</td>';
     echo '<td>' . number_format($line->getPrice(), 2, ',', ' ') . '€</td> ';
     echo '<td> <div class="dropZone"><p class="drop">déplacer l\'image ici pour ajouter au panier</p></div> </td>';  
     echo '<td> <a href="detailGame?id='. $line->getId() .'"><button class="btn btn-info">Details</button></a> </td>'; 
-  }
-
-  if($row == TRUE){
-    echo '<td class="drag"> <img class="smallImg" src="./images/jeux/'. $line->getImageLink() . '"></td>';
-    echo '<td>' . $line->getProductName() . '</td>';
-    echo '<td>' . Product::categorieConvert($line->getCategorieId()) . '</td>';
-    echo '<td>' . number_format($line->getPrice(), 2, ',', ' ') . '€</td> ';
-    echo '<td> <div class="dropZone"><p class="drop">déplacer l\'image ici pour ajouter au panier</p></div> </td>';
-    echo '<td> <a href="detailGame?id='. $line->getId() .'"><button class="btn btn-info">Details</button></a> </td>';
-  }
-  echo '</tr>';
-
-  if($row == FALSE){
-    $row = TRUE;
-  } 
-  else{
-    $row = FALSE;
-  } 
-
-  
+  echo '</tr>';  
 }
 ?>
   </tbody>
 </table>
-
-<?php 
-if(!empty($_SESSION['login'])){
-  echo '<script>
-  $(".drag").draggable({
-    containment : ".limite",
-    revert: true
-  });
-  $(".drop").droppable({
-    drop : function(){
-      $(".drop")
-         .addClass("colorChange")
-         .addClass("bounce");
-    }
-  });
-</script>';
-}
-
-?>
-
-    
 
 
 <?php 
