@@ -1,6 +1,6 @@
-CREATE DATABASE myWebSite;
+DROP DATABASE IF EXISTS myWebSite;
 
-DROP DATABASE myWebSite;
+CREATE DATABASE myWebSite;
 
 USE myWebSite;
 
