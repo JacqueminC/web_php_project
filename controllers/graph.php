@@ -19,7 +19,7 @@ $info = OrderDetails::getThreebest();
 
   function drawChart() {
     var data = new google.visualization.DataTable();
-    data.addColumn('string', 'month');
+    data.addColumn('string', 'product');
     data.addColumn('number', 'sale');
     data.addRows([
       ['<?php echo Product::getProduct($info[0][0])->getProductName() ?>', <?php echo $info[0][1] ?>],
