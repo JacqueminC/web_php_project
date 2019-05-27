@@ -41,6 +41,16 @@ Class Product{
     return $data;
   }
 
+  public static function getProductByPath(string $path){
+    $pdo = DataBase::connect();		
+    $response = $pdo->prepare("SELECT * FROM products WHERE imageLink = :path");
+    $response->execute(array(':path' => $imageLink));
+    $response->setFetchMode( PDO::FETCH_CLASS, "Product");  
+    $data = $response->fetch();
+    
+    return $data;
+  }
+
   public static function categorieConvert(int $cat){
     switch($cat){
       case 1:

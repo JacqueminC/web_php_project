@@ -2,8 +2,7 @@
 require 'layout/header.php';
 ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 
 
 <h2>Jeux</h2>
@@ -24,7 +23,7 @@ require 'layout/header.php';
 
 foreach($produit as $line){
   echo '<tr class="drag">';
-    echo '<td><img class="smallImg" src="./images/jeux/'. $line->getImageLink() . '"></td>';
+    echo '<td><img id=' . $line->getId() . ' class="smallImg" src="./images/jeux/'. $line->getImageLink() . '"></td>';
     echo '<td>' . $line->getProductName() . '</td>';
     echo '<td>' . Product::categorieConvert($line->getCategorieId()) . '</td>';
     echo '<td>' . number_format($line->getPrice(), 2, ',', ' ') . '€</td> ';

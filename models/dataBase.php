@@ -6,7 +6,7 @@ class DataBase{
   const PSW = '';
   
 	public static function connect(){
-		return new PDO(self::DATABASEINFO, USER, PSW,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		return new PDO(self::DATABASEINFO,self::USER, self::PSW,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   }
   
 }

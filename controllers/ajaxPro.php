@@ -1,7 +1,6 @@
 <?php
 require 'models/product.php';
-$position = $_POST['position'];
-$product = Product::getProduct(1);
+$data = $_POST['position'];
+$product = Product::getProduct($data);
 Product::addGameBasket($product);
-
 ?>
