@@ -37,8 +37,11 @@ echo '<tr>
 <div class="d-flex justify-content-center">
   <div class="row">        
     <a href="games"><button type="button" class="btn btn-secondary">Retour</button></a>
-    <?php     
-    echo '<a href="addBasket?id=' . $product->getId() .'"><button type="submit" class="btn btn-success">Ajouter au panier</button></a>';
+    <?php  
+    if (!empty($_SESSION['id'])) {
+      echo '<a href="addBasket?id=' . $product->getId() .'"><button type="submit" class="btn btn-success">Ajouter au panier</button></a>';
+    }   
+    
     ?>
   </div> 
 </div>
